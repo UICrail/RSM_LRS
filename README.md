@@ -1,15 +1,14 @@
-# Ontology-template
+# Purpose
 
-Template for ontologies. Structured in view of using shared **continuous integration** and **documentation** workflows.
+Create a small LRS ontology for the purpose of RSM.
 
-Currently, the following workflows are pre-defined:
+# Rationale
 
-* continuous integration (CI) (.github/workflows/ci.yml): the usual formal checks, using ROBOT, reasoners...
-* WIDOCO generation (.github/workflows/widoco.yml), triggered by successful CI
-* Wiki extraction (.github/workflows/wiki-extract.yml), triggered by successful CI
+A successor to a part of the "Positioning" package in RTM. The former Positioning package covered:
 
-The shared workflows are in GitHub repository Airy59/OntoQA.
+* geographic or geometric referencing systems
+* linear referencing systems
 
-Replace this file with a proper readme.md describing your project.
+The geo-... referencing systems are now managed by using GeoSPARQL. There are overlaps with IFC in this area.
 
-Replace the default EUPL 1.2 license (that applies to the present template) by the license suitable for your project.
+The linear referencing systems need to be addressed. They are also defined in IFC, but at this stage (end of MOTIONAL project) we need a simplified, self-standing representation. Semantic links with IFC are obviously welcome, especially w.r.t. future evolutions.

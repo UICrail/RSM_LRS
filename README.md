@@ -19,6 +19,8 @@ Semantic links with IFC are obviously welcome, especially w.r.t. future evolutio
 
 The [RSM GeoSPARQL adapter](https://cdm.ovh/rsm/adapters/geosparql_adapter/geo_ad.ttl) already introduced the concepts of nominal geometry: typically, a 2D geometry (e.g. derived from public data such as OpenStreetMap) from which nominal placement of linear elements on maps and nominal length of such elements can be derived.
 
+> Note: while OpenStreetMap is a rich and useful source of railway network information, the high uncertainty of longitudinal node placement in OSM (where tracks diverge at switches is a tangential point that is hard to observe precisely) makes IM sources preferrable when available.
+
 Since network topology is deemed very stable in time and associated geometries need not be revised frequently, we chose not to use a DUL "Situation" pattern for describing their evolution. Geometry change can be accomodated with simpler means (triple annotations or versionad named graphs). This choice would not apply to IfcAlignment-related data that are much more detailed and serve track geometry specification and monitoring. In the latter case, SOSA/SSN patterns and their generalization to specifications (POP) are essential.
 
 In the versions of RSM developed under LinX4Rail, and in absence of a "nominal geometry", intrinsic coordinates along a linear element were downgraded:

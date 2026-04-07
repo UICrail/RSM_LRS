@@ -21,7 +21,7 @@ The [RSM GeoSPARQL adapter](https://cdm.ovh/rsm/adapters/geosparql_adapter/geo_a
 
 > Note: while OpenStreetMap is a rich and useful source of railway network information, the high uncertainty of longitudinal node placement in OSM (where tracks diverge at switches is a tangential point that is hard to observe precisely) makes IM sources preferrable when available.
 
-Since network topology is deemed very stable in time and associated geometries need not be revised frequently, we chose not to use a DUL "Situation" pattern for describing their evolution. Geometry change can be accomodated with simpler means (triple annotations or versionad named graphs). This choice would not apply to IfcAlignment-related data that are much more detailed and serve track geometry specification and monitoring. In the latter case, SOSA/SSN patterns and their generalization to specifications (POP) are essential.
+Since network topology is deemed very stable in time and associated geometries need not be revised frequently, we chose not to use a DUL "Situation" pattern for describing their evolution. Geometry change can be accomodated with simpler means (triple annotations or versionad named graphs). This choice would not apply to IfcAlignment-related data that are much more detailed and serve track geometry specification and monitoring. In the latter case, SOSA/SSN patterns and their generalization to specifications (POP) are essential. These patterns replace simple properties such as "hasGeometry" by reified properties, complete with source, timestamp, and any other relevant information.
 
 In the versions of RSM developed under LinX4Rail, and in absence of a "nominal geometry", intrinsic coordinates along a linear element were downgraded:
 

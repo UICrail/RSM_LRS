@@ -1,0 +1,73 @@
+@prefix : <https://cdm.ovh/rsm/linearReferencing/rlrs#> .
+@prefix rlrs: <https://cdm.ovh/rsm/linearReferencing/rlrs#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+# Fictitious ISO 19148 reference
+@prefix iso19148: <http://iso.org/standard/19148#> .
+# Unofficial IFC OWL version 4.3 ADD2 produced via PP toolchain
+@prefix ifc: <https://cdm.ovh/ifc/IfcOWL43ADD2#> .
+@prefix topo: <https://cdm.ovh/rsm/topology/topo#> .
+@prefix loca: <https://cdm.ovh/rsm/localisation/loca#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+
+<http://example.org/rlrs> a owl:Ontology ;
+    rdfs:label "RLRS: Railway Linear Referencing System Ontology" ;
+    rdfs:comment "RSM module for linear referencing, mapping ISO 19148 Referents to GeoSPARQL Geometries linked with RSM Features." ;
+    owl:imports <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>,
+                <https://cdm.ovh/rsm/localisation/loca.ttl> .
+
+### Classes
+
+# ISO 19148: A known location from which relative measurements are made [3.22, 6.2.12.1].
+# DUL: A SpaceRegion aims at representing a location relative to a dimensional space [1].
+# IFC: IfcReferent specifies known locations along a linear element [2].
+rlrs:Referent a owl:Class ;
+    rdfs:subClassOf geosparql:Geometry, ifc:IfcReferent, dul:SpaceRegion ;
+    rdfs:label "Referent" ;
+    rdfs:comment "A known location along a linear element (ISO). Mapped here as a GeoSPARQL Geometry linked to a LinearLocation or LinearElement [User Request]." .
+
+# ISO 19148: A set of linear referencing methods and procedures [3.12].
+# DUL: A Description that represents a conceptualization [3].
+rlrs:LinearReferencingSystem a owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Linear Referencing System" ;
+    rdfs:comment "Combines a referent, specific geometry, and interpolation method." .
+
+# ISO 19148: A manner in which measurements are made [3.11].
+# DUL: A Method guides carrying out actions [4].
+rlrs:LinearReferencingMethod a owl:Class ;
+    rdfs:subClassOf dul:Method ;
+    rdfs:label "Linear Referencing Method" .
+
+# ISO 19148: Measured value defining a location [3.16].
+# DUL: A SpaceRegion localizing an entity [1].
+rlrs:LinearCoordinate a owl:Class ;
+    rdfs:subClassOf dul:SpaceRegion ;
+    rdfs:label "Linear Coordinate" ;
+    rdfs:comment "The coordinate (e.g., mileage) used to place infrastructure or rolling stock." .
+
+### Properties
+
+# Property linking the Referent (Geometry) to the RSM Features.
+# loca:LinearLocation and topo:LinearElement are both geosparql:Feature instances [5-8].
+rlrs:isReferentOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf geosparql:isGeometryOf ;
+    rdfs:domain rlrs:Referent ;
+    rdfs:range [ a owl:Class ; owl:unionOf (loca:LinearLocation topo:LinearElement) ] ;
+    rdfs:label "is referent of" ;
+    rdfs:comment "Links the Referent geometry to its associated RSM LinearLocation or LinearElement feature." .
+
+# Links the LRS to the Referent geometry providing its base location.
+rlrs:hasReferent a owl:ObjectProperty ;
+    rdfs:domain rlrs:LinearReferencingSystem ;
+    rdfs:range rlrs:Referent ;
+    rdfs:label "has referent" .
+
+# Property for identifying what is placed along the track at a coordinate.
+rlrs:locatesAsset a owl:ObjectProperty ;
+    rdfs:domain rlrs:LinearCoordinate ;
+    rdfs:range dul:Object ;
+    rdfs:label "locates asset" ;
+    rdfs:comment "Relates a linear coordinate to a fixed asset or moving rolling stock." .

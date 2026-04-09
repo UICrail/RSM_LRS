@@ -1,0 +1,1243 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://cdm.ovh/rsm/linearReferencing/rlrs#"
+     xml:base="https://cdm.ovh/rsm/linearReferencing/rlrs"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:loca="https://cdm.ovh/rsm/localisation/loca#"
+     xmlns:qudt="http://qudt.org/schema/qudt/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rgeo="https://cdm.ovh/rsm/geosparql_adapter/rgeo#"
+     xmlns:rlrs="https://cdm.ovh/rsm/linearReferencing/rlrs#"
+     xmlns:rtim="https://cdm.ovh/rsm/time/time#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:topo="https://cdm.ovh/rsm/topology/topo#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:vann1="https://vocab.org/vann/"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs">
+        <owl:versionIRI rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs/0.1/rlrs"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl"/>
+        <owl:imports rdf:resource="https://cdm.ovh/rsm/geosparql_adapter/rgeo"/>
+        <dc:creator>Airy Magnien, UIC</dc:creator>
+        <dc:description xml:lang="en">Linear referencing ontology based on ISO 19148:2021. Adds the notion of intrinsic coordinate used by the RSM localisation ontology.</dc:description>
+        <dc:title xml:lang="en">Linear Referencing ontology</dc:title>
+        <dcterms:created xml:lang="en">9 April 2026</dcterms:created>
+        <dcterms:license rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+        <vann:preferredNamespacePrefix>rlrs</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs"/>
+        <owl:versionInfo xml:lang="en">0.1 creation</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#decimal -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#decimal"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#distanceExpression -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#distanceExpression">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#DistanceExpression"/>
+        <rdfs:label xml:lang="en">Distance expression, as per ISO 19148. Requires exactly one distance expression, here referring to a qudt:QuantityValue</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#fromReferent -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#fromReferent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#DistanceExpression"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#Referent"/>
+        <rdfs:comment xml:lang="en">A location from which the linear distance expression shall be restarted, with a restart value</rdfs:comment>
+        <rdfs:label xml:lang="en">from referent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#hasLRM -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#hasLRM">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod"/>
+        <rdfs:label xml:lang="en">has LRM</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#hasPositionExpression -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#hasPositionExpression">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression"/>
+        <rdfs:label xml:lang="en">has position expression</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#linearElement -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#linearElement">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearElementForLinearReferencing"/>
+        <rdfs:label xml:lang="en">linear element</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#linearReferencingMethodType -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#linearReferencingMethodType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Absolute"/>
+                    <rdf:Description rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Interpolative"/>
+                    <rdf:Description rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Relative"/>
+                </owl:oneOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label>linear referencing method type</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#positionsObject -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#positionsObject">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+        <rdfs:label xml:lang="en">positions object</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#positiveDistanceAlongDirection -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#positiveDistanceAlongDirection">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Opposite"/>
+                    <rdf:Description rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Same"/>
+                </owl:oneOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">positive distance along direction</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#restartValue -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#restartValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#Referent"/>
+        <rdfs:range rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#QuantityValue"/>
+        <rdfs:label xml:lang="en">restart value</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#unitOfMeasure -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#unitOfMeasure">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod"/>
+        <rdfs:range rdf:resource="http://qudt.org/schema/qudt/Unit"/>
+        <rdfs:comment xml:lang="en">See ISO 19148. Used in the singular here.</rdfs:comment>
+        <rdfs:label xml:lang="en">unit of measure</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://cdm.ovh/rsm/time/time#hasTimeInterval -->
+
+    <owl:ObjectProperty rdf:about="https://cdm.ovh/rsm/time/time#hasTimeInterval"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#icValue -->
+
+    <owl:DatatypeProperty rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#icValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#IntrinsicPositionExpression"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Intrinsic coordinate ranges from 0 (at port 0) to 1 (at port 1), unitless. Reference is the nominal geometry of the linear element that must be available to define the intermediate values. Linear referencing method is interpolating.
+
+Intrinsic positions can also be defined as full linear positions, using full ISO 19148. The representation provided here is a shorthand for direct use by the topology ontology.</rdfs:comment>
+        <rdfs:label xml:lang="en">intrinsic coordinate value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://qudt.org/schema/qudt/Unit -->
+
+    <owl:Class rdf:about="http://qudt.org/schema/qudt/Unit">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Action -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Action">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ChemicalObject -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ChemicalObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Classification -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Classification">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeIndexedRelation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collective -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collective">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CollectiveAgent -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CollectiveAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Community -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Community">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CollectiveAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Contract -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Contract">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Design -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Design">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedSubstance -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedSubstance">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FunctionalSubstance"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Diagnosis -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Diagnosis">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FormalEntity -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FormalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FunctionalSubstance -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FunctionalSubstance">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Substance"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Group -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Group">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CollectiveAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#LocalConcept -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#LocalConcept">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Narrative -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Narrative">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Norm -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Norm">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ObjectAggregate -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ObjectAggregate">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parthood -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parthood">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeIndexedRelation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Pattern -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Pattern">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAgent -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAttribute -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalPlace -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalPlace">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Place -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Place">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PlanExecution -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PlanExecution">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Process -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Process">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Project -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Project">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Right -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Right">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Set -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Set">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FormalEntity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObjectAttribute -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObjectAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialRelation -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialRelation">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpaceRegion -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpaceRegion">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpatioTemporalRegion -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpatioTemporalRegion">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Substance -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Substance">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Theory -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Theory">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeIndexedRelation -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeIndexedRelation">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Transition -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Transition">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeIndexedRelation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TypeCollection -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TypeCollection">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#UnitOfMeasure -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#UnitOfMeasure">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Workflow -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Workflow">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#WorkflowExecution -->
+
+    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#WorkflowExecution">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PlanExecution"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Feature -->
+
+    <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#Feature">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Geometry -->
+
+    <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#Geometry">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#SpatialObject -->
+
+    <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#SpatialObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://cdm.ovh/rsm/geosparql_adapter/rgeo#Feature -->
+
+    <rdf:Description rdf:about="https://cdm.ovh/rsm/geosparql_adapter/rgeo#Feature">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://cdm.ovh/rsm/geosparql_adapter/rgeo#Geometry -->
+
+    <rdf:Description rdf:about="https://cdm.ovh/rsm/geosparql_adapter/rgeo#Geometry">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearElementForLinearReferencing"/>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#DistanceExpression -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#DistanceExpression">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#QuantityValue"/>
+        <rdfs:comment xml:lang="en">as per ISO 19148</rdfs:comment>
+        <rdfs:label xml:lang="en">Distance expression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#FullLinearPosition -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#FullLinearPosition">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#hasPositionExpression"/>
+                <owl:allValuesFrom rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#InstrinsicPosition"/>
+        <rdfs:comment xml:lang="en">Positioning using an explicit linear coordinate individual</rdfs:comment>
+        <rdfs:label>Full linear position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#InstrinsicPosition -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#InstrinsicPosition">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#hasPositionExpression"/>
+                <owl:allValuesFrom rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#IntrinsicPositionExpression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Instrinsic position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#IntrinsicPositionExpression -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#IntrinsicPositionExpression">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#linearElement"/>
+                <owl:allValuesFrom rdf:resource="https://cdm.ovh/rsm/topology/topo#LinearElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#icValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression"/>
+        <rdfs:comment xml:lang="en">Intrinsic positions can only use a topo:LinearElement as Linear Element in the sense of ISO 19148, hence the property restriction.</rdfs:comment>
+        <rdfs:label xml:lang="en">Intrinsic position expression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#LinearElementForLinearReferencing -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearElementForLinearReferencing">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:comment xml:lang="en">as defined in ISO 19148:2021. It can be of type &quot;curve&quot;, &quot;edge&quot;, or &quot; feature&quot;, according to the same source.</rdfs:comment>
+        <rdfs:label xml:lang="en">Linear element for linear referencing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/time/time#hasTimeInterval"/>
+                <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Situation describing the position of an entity along a linear referent using a linear referencing method.</rdfs:comment>
+        <rdfs:label>Linear position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#linearElement"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Generalisation of ISO 19148 PositionExpression</rdfs:comment>
+        <rdfs:label>Linear position expression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#linearReferencingMethodType"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#positiveDistanceAlongDirection"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#unitOfMeasure"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Linear referencing method, as defined in ISO 19148:2021</rdfs:comment>
+        <rdfs:label xml:lang="en">LinearRefererncingMethod</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#distanceExpression"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#hasLRM"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Following ISO 19148</rdfs:comment>
+        <rdfs:label xml:lang="en">Position expression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#QuantityValue -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#QuantityValue">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Referent -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Referent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:comment xml:lang="en">See ISO 19128 &quot; Referent&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Referent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/localisation/loca#SpotLocation -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/localisation/loca#SpotLocation">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/linearReferencing/rlrs#Referent"/>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/localisation/localisation#BaseLocation -->
+
+    <rdf:Description rdf:about="https://cdm.ovh/rsm/localisation/localisation#BaseLocation">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/geosparql_adapter/rgeo#Feature"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://cdm.ovh/rsm/localisation/localisation#LinearLocation -->
+
+    <rdf:Description rdf:about="https://cdm.ovh/rsm/localisation/localisation#LinearLocation">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing"/>
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/localisation/localisation#BaseLocation"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://cdm.ovh/rsm/topology/topo#LinearElement -->
+
+    <owl:Class rdf:about="https://cdm.ovh/rsm/topology/topo#LinearElement">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://cdm.ovh/rsm/topology/topology#LinearElement -->
+
+    <rdf:Description rdf:about="https://cdm.ovh/rsm/topology/topology#LinearElement">
+        <rdfs:subClassOf rdf:resource="https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Absolute -->
+
+    <owl:NamedIndividual rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Absolute">
+        <rdfs:label xml:lang="en">Absolute</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Interpolative -->
+
+    <owl:NamedIndividual rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Interpolative">
+        <rdfs:label xml:lang="en">Interpolation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Opposite -->
+
+    <owl:NamedIndividual rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Opposite">
+        <rdfs:label>Opposite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Relative -->
+
+    <owl:NamedIndividual rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Relative">
+        <rdfs:label xml:lang="en">Relative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://cdm.ovh/rsm/linearReferencing/rlrs#Same -->
+
+    <owl:NamedIndividual rdf:about="https://cdm.ovh/rsm/linearReferencing/rlrs#Same">
+        <rdfs:label xml:lang="en">Same</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

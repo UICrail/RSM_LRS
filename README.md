@@ -9,29 +9,41 @@ A successor to a part of the "Positioning" package in RTM. The former Positionin
 * geographic or geometric referencing systems
 * linear referencing systems
 
-Geographic or geometric referencing systems are now managed by using GeoSPARQL, and in the future by using IFC (for local coordinate systems).
+Geographic or geometric referencing systems are now managed by using GeoSPARQL, and in the future by linking with IFC (for local coordinate systems or track alignment data).
 
-Linear referencing systems remain to be addressed. They are also defined in IFC, which adheres with ISO19148 to a large extent. However at this stage (end of MOTIONAL project) we need a simplified, self-standing representation.
-
-Semantic links with IFC are obviously welcome, especially w.r.t. future evolutions.
+Linear referencing systems remain to be addressed. They are also defined in IFC, which adheres with ISO19148:2021 to a large extent. However at this stage (end of MOTIONAL project) we need a self-standing representation.
 
 # Design guidelines
 
-The [RSM GeoSPARQL adapter](https://cdm.ovh/rsm/adapters/geosparql_adapter/geo_ad.ttl) already introduced the concepts of nominal geometry: typically, a 2D geometry (e.g. derived from public data such as OpenStreetMap) from which nominal placement of linear elements on maps and nominal length of such elements can be derived.
+## ISO 19148:2021 conformance
 
-> Note: while OpenStreetMap is a rich and useful source of railway network information, the high uncertainty of longitudinal node placement in OSM (where tracks diverge at switches is a tangential point that is hard to observe precisely) makes IM sources preferrable when available.
+The ontology is designed in conformance with ISO 19148:2021, with the following adaptations:
 
-Since network topology is deemed very stable in time and associated geometries need not be revised frequently, we chose not to use a DUL "Situation" pattern for describing their evolution. Geometry change can be accomodated with simpler means (triple annotations or versionad named graphs). This choice would not apply to IfcAlignment-related data that are much more detailed and serve track geometry specification and monitoring. In the latter case, SOSA/SSN patterns and their generalization to specifications (POP) are essential. These patterns replace simple properties such as "hasGeometry" by reified properties, complete with source, timestamp, and any other relevant information.
+* ISO Terminology was re-used:
+  * Terms adhere to ISO, except in rare cases where similar terms are used in RSM. For instance, "Linear element" occurs both in RSM topology and in ISO 19148. We disambiguated the ISO term into "Linear element for linear referencing".
+  * Definitions do not extensively quote ISO definitions (owing to copyright issues).
+* RSM_LRS OWL ontology is derived from the ISO UML class diagrams, with all adaptations required when changing modelling framework.
+* RSM_LRS does not transpose the entire ISO, although this would be possible of course. Most concepts were transposed, but many attributes (annotations) and some multiplicities were not transposed.
 
-In the versions of RSM developed under LinX4Rail, and in absence of a "nominal geometry", intrinsic coordinates along a linear element were downgraded:
+Conformance verification remains to be performed.
 
-* from being a linear referencing system using extremal coordinates 0 and 1 and an interpolation method for intermediate values, to
-* a mere support for a total order relation along the element.
+## Evolution since RTM 1.0
 
-It was possible to state in what succession net entities would appear along the linear element, but the way coordinates are derived was left to the user.
+The notions of geometric or geographic referencing systems (in 2D or 3D space), linear referencing systems, and intrinsic coordinates were contained in the positioning UML package of RTM 1.1 and 1.2.
 
-In the present case, we follow the current (semantic RSM) topology definition, where each linear element is a geo:Feature and may be associated with a geo:Geometry. We use the 'hasNominalGeometry' property defined by GeoSPARQL to derive a 'NominalLRS' associated with each linear element.
+Now these three coordinate systems are separated, and the earlier Positioning package was removed.
 
-Linear locations refer to linear elements. Their nominal geometry may be obtained by assembling nominal geometries of linear elements (or segments thereof). This derivation was not suggested, let alone enforced, by the geosparql adapter ontology. The adapter only states its existence of a nominal geometry applying to linear elements in a 1-to-1 relationship.
+* The [RSM GeoSPARQL adapter](https://cdm.ovh/rsm/adapters/geosparql_adapter/geo_ad.ttl) takes care of geographic referencing systems.
 
-In RSM Linear referencing systems (not defined as such in ISO 19148) are defined by a linear location, one particular associated geometry (nominal or not), and an interpolation method (following ISO 19148). The chosen geometry is equivalent to an ISO19148 referent.
+* Linear referencing is the topic of the present RSM_LRS.
+
+* Other geometric referencing systems (typically, local or project coordinate systems) shall be addressed by IFC.
+
+## Intrinsic coordinates
+
+The notion of "intrinsic coordinate" was part of the RTM positioning package and used is the topology package. It is a normalized distance along a linear element (in the sense of RSM topology), starting from port (extremity) 0 with value 0.0 and ending at port (extremity) 1 with value 1.0. At present:
+
+* intrinsic coordinates are no longer necessary for describing topology (linear element extremities being embodied by "ports");
+* intrinsic coordinates remain instrumental in the localisation package, to define linear locations that include segments of linear elements (e.g. the location of a speed reduction or the location of a tunnel)
+* intrinsic coordinates are defined (ISO-compliant) as a linear referencing system using a nominal geometry (as ISO Linear element) over a linear net element (in the sense of RSM topology) and using Linear Referencing Method "Interpolating". To implement that definition, the ISO-compliant part of the ontology suffices and does not need adaptations.
+* in addition, intrinsic coordinates can be represented using using a dedicated "shorthand" close to earlier RTM/RSM version.

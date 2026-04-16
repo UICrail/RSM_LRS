@@ -1,200 +1,322 @@
 @prefix : <https://cdm.ovh/rsm/linearReferencing/rlrs#> .
-@prefix cc: <http://creativecommons.org/ns#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix loca: <https://cdm.ovh/rsm/localisation/loca#> .
-@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rgeo: <https://cdm.ovh/rsm/geosparql_adapter/rgeo#> .
-@prefix rlrs: <https://cdm.ovh/rsm/linearReferencing/rlrs#> .
-@prefix rtim: <https://cdm.ovh/rsm/time/time#> .
-@prefix topo: <https://cdm.ovh/rsm/topology/topo#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @base <https://cdm.ovh/rsm/linearReferencing/rlrs> .
 
 <https://cdm.ovh/rsm/linearReferencing/rlrs> rdf:type owl:Ontology ;
-                                              owl:versionIRI <https://cdm.ovh/rsm/linearReferencing/rlrs/0.1/rlrs> ;
-                                              owl:imports <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> ,
-                                                          <https://cdm.ovh/rsm/geosparql_adapter/rgeo> ;
-                                              dc:creator "Airy Magnien, UIC" ;
-                                              dc:description "Linear referencing ontology based on ISO 19148:2021. Adds the notion of intrinsic coordinate used by the RSM localisation ontology."@en ;
-                                              dc:title "Linear Referencing ontology"@en ;
-                                              dcterms:created "9 April 2026"@en ;
-                                              dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-                                              vann:preferredNamespacePrefix "rlrs" ;
-                                              vann:preferredNamespaceUri <https://cdm.ovh/rsm/linearReferencing/rlrs> ;
-                                              owl:versionInfo "0.1 creation"@en .
+                                              owl:versionIRI <https://cdm.ovh/rsm/linearReferencing/rlrs/0.2/rlrs> ;
+                                              owl:imports <https://cdm.ovh/rsm/adapters/geosparql_adapter/geo_ad> ,
+                                                          <https://cdm.ovh/rsm/list2/0.1/> ;
+                                              <http://purl.org/dc/elements/1.1/creator> "Airy Magnien, UIC" ;
+                                              <http://purl.org/dc/elements/1.1/description> "Linear referencing ontology based on ISO 19148:2021. Adds the notion of intrinsic coordinate used by the RSM localisation ontology."@en ;
+                                              <http://purl.org/dc/elements/1.1/title> "Linear Referencing ontology"@en ;
+                                              <http://purl.org/dc/terms/created> "12 April 2026"@en ;
+                                              <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by-sa/4.0/> ;
+                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "rlrs" ;
+                                              <http://purl.org/vocab/vann/preferredNamespaceUri> <https://cdm.ovh/rsm/linearReferencing/rlrs> ;
+                                              owl:versionInfo "0.1 creation"@en ,
+                                                              "0.2 added: vertical and lateral offsets (ISO 19148) sides and values, as well as longitudinal offset (not in ISO)"@en .
 
 #################################################################
-#    Annotation properties
+#    Annotation properties
 #################################################################
-
+
 ###  http://purl.org/dc/elements/1.1/creator
-dc:creator rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/description
-dc:description rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/title
-dc:title rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/created
-dcterms:created rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
-vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespaceUri
-vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+<http://www.w3.org/2004/02/skos/core#closeMatch> rdf:type owl:AnnotationProperty .
 
 
 #################################################################
-#    Datatypes
+#    Datatypes
 #################################################################
-
+
 ###  http://www.w3.org/2001/XMLSchema#decimal
 xsd:decimal rdf:type rdfs:Datatype .
 
 
 #################################################################
-#    Object Properties
+#    Object Properties
 #################################################################
-
+
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant
 <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> rdf:type owl:ObjectProperty .
 
 
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#applicationDirection
+:applicationDirection rdf:type owl:ObjectProperty ;
+                      rdfs:domain :IntrinsicPositionExpression ;
+                      rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                      rdfs:comment "expected values from skos concept scheme 'application_direction': normal, reverse, both, undefined (see EULYNX DP). \"Normal\" related to the orientation of the linear element, from port 0 to port 1."@en ;
+                      rdfs:label "applicationDirection"@en .
+
+
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#distanceExpression
-rlrs:distanceExpression rdf:type owl:ObjectProperty ,
-                                 owl:FunctionalProperty ;
-                        rdfs:domain rlrs:PositionExpression ;
-                        rdfs:range rlrs:DistanceExpression ;
-                        rdfs:label "Distance expression, as per ISO 19148. Requires exactly one distance expression, here referring to a qudt:QuantityValue"@en .
+:distanceExpression rdf:type owl:ObjectProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain :PositionExpression ;
+                    rdfs:range :DistanceExpression ;
+                    rdfs:label "Distance expression, as per ISO 19148. Requires exactly one distance expression, here referring to a qudt:QuantityValue"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#fromReferent
-rlrs:fromReferent rdf:type owl:ObjectProperty ,
-                           owl:FunctionalProperty ;
-                  rdfs:domain rlrs:DistanceExpression ;
-                  rdfs:range rlrs:Referent ;
-                  rdfs:comment "A location from which the linear distance expression shall be restarted, with a restart value"@en ;
-                  rdfs:label "from referent"@en .
+:fromReferent rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :DistanceExpression ;
+              rdfs:range :Referent ;
+              rdfs:comment "A location from which the linear distance expression shall be restarted, with a restart value"@en ;
+              rdfs:label "from referent"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#hasLRM
-rlrs:hasLRM rdf:type owl:ObjectProperty ,
-                     owl:FunctionalProperty ;
-            rdfs:domain rlrs:PositionExpression ;
-            rdfs:range rlrs:LinearReferencingMethod ;
-            rdfs:label "has LRM"@en .
+:hasLRM rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :PositionExpression ;
+        rdfs:range :LinearReferencingMethod ;
+        rdfs:label "has LRM"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#hasPositionExpression
-rlrs:hasPositionExpression rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> ;
-                           rdfs:domain rlrs:LinearPosition ;
-                           rdfs:range rlrs:LinearPositionExpression ;
-                           rdfs:label "has position expression"@en .
+:hasPositionExpression rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> ;
+                       rdfs:domain :LinearPosition ;
+                       rdfs:range :LinearPositionExpression ;
+                       rdfs:label "has position expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#lateralOffsetExpression
+:lateralOffsetExpression rdf:type owl:ObjectProperty ,
+                                  owl:FunctionalProperty ;
+                         rdfs:domain :OffsetDistanceExpression ;
+                         rdfs:range :LateralOffsetExpression ;
+                         rdfs:label "lateral offset expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#lateralSide
+:lateralSide rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :IntrinsicPositionExpression ;
+             rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:comment "expected values in side concept scheme: Left, Right"@en ;
+             rdfs:label "lateral side"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#linearElement
-rlrs:linearElement rdf:type owl:ObjectProperty ,
-                            owl:FunctionalProperty ;
-                   rdfs:domain rlrs:LinearPositionExpression ;
-                   rdfs:range rlrs:LinearElementForLinearReferencing ;
-                   rdfs:label "linear element"@en .
+:linearElement rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :LinearPositionExpression ;
+               rdfs:range :LinearElementForLinearReferencing ;
+               rdfs:label "linear element"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#linearReferencingMethodType
-rlrs:linearReferencingMethodType rdf:type owl:ObjectProperty ,
-                                          owl:FunctionalProperty ;
-                                 rdfs:domain rlrs:LinearReferencingMethod ;
-                                 rdfs:range [ rdf:type owl:Class ;
-                                              owl:oneOf ( rlrs:Absolute
-                                                          rlrs:Interpolative
-                                                          rlrs:Relative
-                                                        )
-                                            ] ;
-                                 rdfs:label "linear referencing method type" .
+:linearReferencingMethodType rdf:type owl:ObjectProperty ,
+                                      owl:FunctionalProperty ;
+                             rdfs:domain :LinearReferencingMethod ;
+                             rdfs:range [ rdf:type owl:Class ;
+                                          owl:oneOf ( :Absolute
+                                                      :Interpolative
+                                                      :Relative
+                                                    )
+                                        ] ;
+                             rdfs:label "linear referencing method type" .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#longitudinalOffsetExpression
+:longitudinalOffsetExpression rdf:type owl:ObjectProperty ,
+                                       owl:FunctionalProperty ;
+                              rdfs:domain :OffsetDistanceExpression ;
+                              rdfs:range :LongitudinalOffsetExpression ;
+                              rdfs:label "longitudinal offset expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#longitudinalSide
+:longitudinalSide rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :IntrinsicPositionExpression ;
+                  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                  rdfs:comment "expeced values in skos concept scheme : fore, aft. Not defined in ISO 19148:2021"@en ;
+                  rdfs:label "longitudinal side"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#offsetUnit
+:offsetUnit rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :LRMWithOffset ;
+            rdfs:range <http://qudt.org/schema/qudt/Unit> ;
+            rdfs:label "offset unit"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#positionedBy
+:positionedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf :positionsObject ;
+              rdf:type owl:InverseFunctionalProperty ;
+              rdfs:domain <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object> ;
+              rdfs:range :LinearPosition ;
+              rdfs:comment "points at all linear positions (recommended: ...that are heads of OWL lists). Note: even a spot location can participate in several linear position situations, e.g. when a signal serves two adjacent tracks, its spot location is relative to the two corresponding linear elements."@en ;
+              rdfs:label "positioned by"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#positionsObject
-rlrs:positionsObject rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> ;
-                     rdf:type owl:FunctionalProperty ;
-                     rdfs:domain rlrs:LinearPosition ;
-                     rdfs:range <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object> ;
-                     rdfs:label "positions object"@en .
+:positionsObject rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :LinearPosition ;
+                 rdfs:range <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object> ;
+                 rdfs:label "positions object"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#positiveDistanceAlongDirection
-rlrs:positiveDistanceAlongDirection rdf:type owl:ObjectProperty ,
-                                             owl:FunctionalProperty ;
-                                    rdfs:domain rlrs:LinearReferencingMethod ;
-                                    rdfs:range [ rdf:type owl:Class ;
-                                                 owl:oneOf ( rlrs:Opposite
-                                                             rlrs:Same
-                                                           )
-                                               ] ;
-                                    rdfs:label "positive distance along direction"@en .
+:positiveDistanceAlongDirection rdf:type owl:ObjectProperty ,
+                                         owl:FunctionalProperty ;
+                                rdfs:domain :LinearReferencingMethod ;
+                                rdfs:range [ rdf:type owl:Class ;
+                                             owl:oneOf ( :Opposite
+                                                         :Same
+                                                       )
+                                           ] ;
+                                rdfs:label "positive distance along direction"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#positiveLateralOffsetDirection
+:positiveLateralOffsetDirection rdf:type owl:ObjectProperty ,
+                                         owl:FunctionalProperty ;
+                                rdfs:domain :LRMWithOffset ;
+                                rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                rdfs:label "positive lateral offset direction"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#positiveLongitudinalOffsetDirection
+:positiveLongitudinalOffsetDirection rdf:type owl:ObjectProperty ,
+                                              owl:FunctionalProperty ;
+                                     rdfs:domain :LRMWithOffset ;
+                                     rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                     rdfs:comment """Not available in ISO19148:2021.
+The combination of oriented longitudinal, lateral and vertical offsets allows to interface with local cartesian referencing systems as provided e.g. by IFC."""@en ;
+                                     rdfs:label "positive longitudinal offset direction"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#positiveVerticalOffsetDirection
+:positiveVerticalOffsetDirection rdf:type owl:ObjectProperty ,
+                                          owl:FunctionalProperty ;
+                                 rdfs:domain :LRMWithOffset ;
+                                 rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                 rdfs:label "positive vertical offset direction"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#restartValue
-rlrs:restartValue rdf:type owl:ObjectProperty ,
-                           owl:FunctionalProperty ;
-                  rdfs:domain rlrs:Referent ;
-                  rdfs:range rlrs:QuantityValue ;
-                  rdfs:label "restart value"@en .
+:restartValue rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :Referent ;
+              rdfs:range :QuantityValue ;
+              rdfs:label "restart value"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#unitOfMeasure
-rlrs:unitOfMeasure rdf:type owl:ObjectProperty ,
-                            owl:FunctionalProperty ;
-                   rdfs:domain rlrs:LinearReferencingMethod ;
-                   rdfs:range qudt:Unit ;
-                   rdfs:comment "See ISO 19148. Used in the singular here."@en ;
-                   rdfs:label "unit of measure"@en .
+:unitOfMeasure rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :LinearReferencingMethod ;
+               rdfs:range <http://qudt.org/schema/qudt/Unit> ;
+               rdfs:comment "See ISO 19148. Used in the singular here."@en ;
+               rdfs:label "unit of measure"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#verticalOffsetExpression
+:verticalOffsetExpression rdf:type owl:ObjectProperty ,
+                                   owl:FunctionalProperty ;
+                          rdfs:domain :OffsetDistanceExpression ;
+                          rdfs:range :VerticalOffsetExpression ;
+                          rdfs:label "vertical offset expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#verticalSide
+:verticalSide rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :IntrinsicPositionExpression ;
+              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+              rdfs:comment "expected values in side concept scheme: up, down (matching ISO 19148:2021)"@en ;
+              rdfs:label "vertical side"@en .
 
 
 ###  https://cdm.ovh/rsm/time/time#hasTimeInterval
-rtim:hasTimeInterval rdf:type owl:ObjectProperty .
+<https://cdm.ovh/rsm/time/time#hasTimeInterval> rdf:type owl:ObjectProperty .
 
 
 #################################################################
-#    Data properties
+#    Data properties
 #################################################################
-
+
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#icValue
-rlrs:icValue rdf:type owl:DatatypeProperty ,
-                      owl:FunctionalProperty ;
-             rdfs:domain rlrs:IntrinsicPositionExpression ;
-             rdfs:range xsd:decimal ;
-             rdfs:comment """Intrinsic coordinate ranges from 0 (at port 0) to 1 (at port 1), unitless. Reference is the nominal geometry of the linear element that must be available to define the intermediate values. Linear referencing method is interpolating.
+:icValue rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :IntrinsicPositionExpression ;
+         rdfs:range xsd:decimal ;
+         rdfs:comment """Intrinsic coordinate ranges from 0 (at port 0) to 1 (at port 1), unitless. Reference is the nominal geometry of the linear element that must be available to define the intermediate values. Linear referencing method is interpolating.
 
 Intrinsic positions can also be defined as full linear positions, using full ISO 19148. The representation provided here is a shorthand for direct use by the topology ontology."""@en ;
-             rdfs:label "intrinsic coordinate value"@en .
+         rdfs:label "intrinsic coordinate value"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#lateralOffset
+:lateralOffset rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :IntrinsicPositionExpression ;
+               rdfs:range xsd:decimal ;
+               rdfs:comment "unit: meter; positive on right side w.r.t. linear element orientation (port 0 to port 1)"@en ;
+               rdfs:label "lateral offset"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#longitudinalOffset
+:longitudinalOffset rdf:type owl:DatatypeProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain :IntrinsicPositionExpression ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:label "longitudinal offset"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#verticalOffset
+:verticalOffset rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :IntrinsicPositionExpression ;
+                rdfs:range xsd:decimal ;
+                rdfs:label "vertical offset"@en .
 
 
 #################################################################
-#    Classes
+#    Classes
 #################################################################
-
+
 ###  http://qudt.org/schema/qudt/Unit
-qudt:Unit rdf:type owl:Class .
+<http://qudt.org/schema/qudt/Unit> rdf:type owl:Class .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject
@@ -214,167 +336,195 @@ qudt:Unit rdf:type owl:Class .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval> rdf:type owl:Class .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <https://cdm.ovh/rsm/list2/list2#OWLList> .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
 
 
 ###  https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing
-rgeo:LinearThing rdf:type owl:Class ;
-                 rdfs:subClassOf rlrs:LinearElementForLinearReferencing .
+<https://cdm.ovh/rsm/geosparql_adapter/rgeo#LinearThing> rdf:type owl:Class ;
+                                                         rdfs:subClassOf :LinearElementForLinearReferencing .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#DistanceExpression
-rlrs:DistanceExpression rdf:type owl:Class ;
-                        rdfs:subClassOf rlrs:QuantityValue ;
-                        rdfs:comment "as per ISO 19148"@en ;
-                        rdfs:label "Distance expression"@en .
+:DistanceExpression rdf:type owl:Class ;
+                    rdfs:subClassOf :QuantityValue ;
+                    rdfs:comment "as per ISO 19148"@en ;
+                    rdfs:label "Distance expression"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#FullLinearPosition
-rlrs:FullLinearPosition rdf:type owl:Class ;
-                        rdfs:subClassOf rlrs:LinearPosition ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty rlrs:hasPositionExpression ;
-                                          owl:allValuesFrom rlrs:PositionExpression
-                                        ] ;
-                        owl:disjointWith rlrs:InstrinsicPosition ;
-                        rdfs:comment "Positioning using an explicit linear coordinate individual"@en ;
-                        rdfs:label "Full linear position" .
+:FullLinearPosition rdf:type owl:Class ;
+                    rdfs:subClassOf :LinearPosition ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasPositionExpression ;
+                                      owl:allValuesFrom :PositionExpression
+                                    ] ;
+                    owl:disjointWith :InstrinsicPosition ;
+                    rdfs:comment "Positioning using an explicit linear coordinate individual"@en ;
+                    rdfs:label "Full linear position" .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#InstrinsicPosition
-rlrs:InstrinsicPosition rdf:type owl:Class ;
-                        rdfs:subClassOf rlrs:LinearPosition ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty rlrs:hasPositionExpression ;
-                                          owl:allValuesFrom rlrs:IntrinsicPositionExpression
-                                        ] ;
-                        rdfs:label "Instrinsic position" .
+:InstrinsicPosition rdf:type owl:Class ;
+                    rdfs:subClassOf :LinearPosition ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasPositionExpression ;
+                                      owl:allValuesFrom :IntrinsicPositionExpression
+                                    ] ;
+                    rdfs:label "Instrinsic position" .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#IntrinsicPositionExpression
-rlrs:IntrinsicPositionExpression rdf:type owl:Class ;
-                                 rdfs:subClassOf rlrs:LinearPositionExpression ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty rlrs:linearElement ;
-                                                   owl:allValuesFrom topo:LinearElement
-                                                 ] ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty rlrs:icValue ;
-                                                   owl:someValuesFrom rdfs:Literal
-                                                 ] ;
-                                 owl:disjointWith rlrs:PositionExpression ;
-                                 rdfs:comment "Intrinsic positions can only use a topo:LinearElement as Linear Element in the sense of ISO 19148, hence the property restriction."@en ;
-                                 rdfs:label "Intrinsic position expression"@en .
+:IntrinsicPositionExpression rdf:type owl:Class ;
+                             rdfs:subClassOf :LinearPositionExpression ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :linearElement ;
+                                               owl:allValuesFrom <https://cdm.ovh/rsm/topology/topo#LinearElement>
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :icValue ;
+                                               owl:someValuesFrom rdfs:Literal
+                                             ] ;
+                             owl:disjointWith :PositionExpression ;
+                             rdfs:comment "Intrinsic positions can only use a topo:LinearElement as Linear Element in the sense of ISO 19148, hence the property restriction."@en ;
+                             rdfs:label "Intrinsic position expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#LRMWithOffset
+:LRMWithOffset rdf:type owl:Class ;
+               rdfs:subClassOf :LinearReferencingMethod ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :offsetUnit ;
+                                 owl:someValuesFrom owl:Thing
+                               ] ;
+               rdfs:comment "As defined in ISO19148:2021, section 6.4.2"@en ;
+               rdfs:label "LRM with offset"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#LateralOffsetExpression
+:LateralOffsetExpression rdf:type owl:Class ;
+                         rdfs:label "Lateral offset expression"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#LinearElementForLinearReferencing
-rlrs:LinearElementForLinearReferencing rdf:type owl:Class ;
-                                       rdfs:comment "as defined in ISO 19148:2021. It can be of type \"curve\", \"edge\", or \" feature\", according to the same source."@en ;
-                                       rdfs:label "Linear element for linear referencing"@en .
+:LinearElementForLinearReferencing rdf:type owl:Class ;
+                                   rdfs:comment "as defined in ISO 19148:2021. It can be of type \"curve\", \"edge\", or \" feature\", according to the same source."@en ;
+                                   rdfs:label "Linear element for linear referencing"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPosition
-rlrs:LinearPosition rdf:type owl:Class ;
-                    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation> ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty rtim:hasTimeInterval ;
-                                      owl:allValuesFrom <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval>
-                                    ] ;
-                    rdfs:comment "Situation describing the position of an entity along a linear referent using a linear referencing method."@en ;
-                    rdfs:label "Linear position" .
+:LinearPosition rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation> ,
+                                <https://cdm.ovh/rsm/list2/list2#OWLList> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <https://cdm.ovh/rsm/time/time#hasTimeInterval> ;
+                                  owl:allValuesFrom <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval>
+                                ] ;
+                rdfs:comment "Situation describing the position of an entity along a linear referent using a linear referencing method."@en ;
+                rdfs:label "Linear position" .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#LinearPositionExpression
-rlrs:LinearPositionExpression rdf:type owl:Class ;
-                              rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject> ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty rlrs:linearElement ;
-                                                owl:someValuesFrom owl:Thing
-                                              ] ;
-                              rdfs:comment "Generalisation of ISO 19148 PositionExpression"@en ;
-                              rdfs:label "Linear position expression" .
+:LinearPositionExpression rdf:type owl:Class ;
+                          rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject> ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :linearElement ;
+                                            owl:someValuesFrom owl:Thing
+                                          ] ;
+                          rdfs:comment "Generalisation of ISO 19148 PositionExpression"@en ;
+                          rdfs:label "Linear position expression" .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#LinearReferencingMethod
-rlrs:LinearReferencingMethod rdf:type owl:Class ;
-                             rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method> ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty rlrs:linearReferencingMethodType ;
-                                               owl:someValuesFrom owl:Thing
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty rlrs:positiveDistanceAlongDirection ;
-                                               owl:someValuesFrom owl:Thing
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty rlrs:unitOfMeasure ;
-                                               owl:someValuesFrom owl:Thing
-                                             ] ;
-                             rdfs:comment "Linear referencing method, as defined in ISO 19148:2021"@en ;
-                             rdfs:label "LinearRefererncingMethod"@en .
+:LinearReferencingMethod rdf:type owl:Class ;
+                         rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method> ;
+                         rdfs:comment "Linear referencing method, as defined in ISO 19148:2021"@en ;
+                         rdfs:label "LinearRefererncingMethod"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#LongitudinalOffsetExpression
+:LongitudinalOffsetExpression rdf:type owl:Class ;
+                              rdfs:comment "not in ISO 19148:2021"@en ;
+                              rdfs:label "Longitudinal offset expression"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#OffsetDistanceExpression
+:OffsetDistanceExpression rdf:type owl:Class ;
+                          rdfs:subClassOf :DistanceExpression ;
+                          rdfs:label "Offset distance expression"@en ;
+                          <http://www.w3.org/2004/02/skos/core#closeMatch> "ISO 19148:2021 LateralOffsetDistanceExpression (section 6.4.1)"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#PositionExpression
-rlrs:PositionExpression rdf:type owl:Class ;
-                        rdfs:subClassOf rlrs:LinearPositionExpression ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty rlrs:distanceExpression ;
-                                          owl:someValuesFrom owl:Thing
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty rlrs:hasLRM ;
-                                          owl:someValuesFrom owl:Thing
-                                        ] ;
-                        rdfs:comment "Following ISO 19148"@en ;
-                        rdfs:label "Position expression"@en .
+:PositionExpression rdf:type owl:Class ;
+                    rdfs:subClassOf :LinearPositionExpression ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :distanceExpression ;
+                                      owl:someValuesFrom owl:Thing
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasLRM ;
+                                      owl:someValuesFrom owl:Thing
+                                    ] ;
+                    rdfs:comment "Following ISO 19148"@en ;
+                    rdfs:label "Position expression"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#QuantityValue
-rlrs:QuantityValue rdf:type owl:Class .
+:QuantityValue rdf:type owl:Class .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Referent
-rlrs:Referent rdf:type owl:Class ;
-              rdfs:comment "See ISO 19128 \" Referent\""@en ;
-              rdfs:label "Referent"@en .
+:Referent rdf:type owl:Class ;
+          rdfs:comment "See ISO 19128 \" Referent\""@en ;
+          rdfs:label "Referent"@en .
+
+
+###  https://cdm.ovh/rsm/linearReferencing/rlrs#VerticalOffsetExpression
+:VerticalOffsetExpression rdf:type owl:Class ;
+                          rdfs:label "Vertical offset expression"@en .
 
 
 ###  https://cdm.ovh/rsm/localisation/loca#SpotLocation
-loca:SpotLocation rdf:type owl:Class ;
-                  rdfs:subClassOf rlrs:Referent .
+<https://cdm.ovh/rsm/localisation/loca#SpotLocation> rdf:type owl:Class ;
+                                                     rdfs:subClassOf :Referent .
 
 
 ###  https://cdm.ovh/rsm/topology/topo#LinearElement
-topo:LinearElement rdf:type owl:Class .
+<https://cdm.ovh/rsm/topology/topo#LinearElement> rdf:type owl:Class .
 
 
 #################################################################
-#    Individuals
+#    Individuals
 #################################################################
-
+
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Absolute
-rlrs:Absolute rdf:type owl:NamedIndividual ;
-              rdfs:label "Absolute"@en .
+:Absolute rdf:type owl:NamedIndividual ;
+          rdfs:label "Absolute"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Interpolative
-rlrs:Interpolative rdf:type owl:NamedIndividual ;
-                   rdfs:label "Interpolation"@en .
+:Interpolative rdf:type owl:NamedIndividual ;
+               rdfs:label "Interpolation"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Opposite
-rlrs:Opposite rdf:type owl:NamedIndividual ;
-              rdfs:label "Opposite" .
+:Opposite rdf:type owl:NamedIndividual ;
+          rdfs:label "Opposite" .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Relative
-rlrs:Relative rdf:type owl:NamedIndividual ;
-              rdfs:label "Relative"@en .
+:Relative rdf:type owl:NamedIndividual ;
+          rdfs:label "Relative"@en .
 
 
 ###  https://cdm.ovh/rsm/linearReferencing/rlrs#Same
-rlrs:Same rdf:type owl:NamedIndividual ;
-          rdfs:label "Same"@en .
+:Same rdf:type owl:NamedIndividual ;
+      rdfs:label "Same"@en .
 
 
-###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
